@@ -34,52 +34,63 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
-      <div
-        className="vertical-navbar"
+      <nav
+        className="navbar is-transparent"
         role="navigation"
         aria-label="main-navigation"
       >
-        <Link className="docs-logo" to="/">
-          SVG Logo
-        </Link>
-        <button className="docs-nav-toggle" aria-expanded="false">
-          <svg className="docs-icon" focusable="false" viewBox="0 0 32 32">
-            <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
-          </svg>
-          Menu
-        </button>
-        <nav className="docs-nav" aria-labelledby="nav-label">
-          <span id="nav-label" hidden="">main</span>
-          <h2>Rudiments</h2>
-          <ul>
-            <li>
+        <div className="container">
+          <div className="navbar-brand">
+            <Link to="/" className="navbar-item" title="Logo">
+              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+            </Link>
+            {/* Hamburger menu */}
+            <div
+              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
+              data-target="navMenu"
+              onClick={() => this.toggleHamburger()}
+            >
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          <div
+            id="navMenu"
+            className={`navbar-menu ${this.state.navBarActiveClass}`}
+          >
+            <div className="navbar-start has-text-centered">
               <Link className="navbar-item" to="/about">
                 About
               </Link>
-            </li>
-            <li>
               <Link className="navbar-item" to="/products">
                 Products
               </Link>
-            </li>
-            <li>
               <Link className="navbar-item" to="/blog">
                 Blog
               </Link>
-            </li>
-            <li>
               <Link className="navbar-item" to="/contact">
                 Contact
               </Link>
-            </li>
-            <li>
               <Link className="navbar-item" to="/contact/examples">
                 Form Examples
               </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+            </div>
+            <div className="navbar-end has-text-centered">
+              <a
+                className="navbar-item"
+                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="icon">
+                  <img src={github} alt="Github" />
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
     )
   }
 }

@@ -39,9 +39,36 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <Link className="docs-logo" to="/">
-          SVG Logo
-        </Link>
+        <img src="https://image.flaticon.com/icons/svg/168/168732.svg" />
+        <a className="docs-logo" href="/" style={{
+          position: 'absolute',
+          marginTop: '-15px',
+          zIndex: 999999999,
+          float: 'left',
+          textAlign: 'left',
+          left: '13px',
+          top: '165px',
+          backgroundColor: 'transparent',
+        }}>
+          <div className="-text-center" style={{
+            fontSize: '.8rem',
+            backgroundColor: '#0000',
+          }}>
+            <span className="nav__fontLogo -cubic-font"
+             style={{
+              color: '#ffffffe0',
+              fontSize: '3.85em'
+             }}>GiuB</span>
+            <br />
+            <span style={{
+                color: '#ffffffe0',
+                fontWeight: 900,
+                float: 'right',
+                marginTop: '-15px',
+            }}>web.dev
+            </span>
+          </div>
+        </a>
         <button className="docs-nav-toggle" aria-expanded="false">
           <svg className="docs-icon" focusable="false" viewBox="0 0 32 32">
             <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
@@ -49,8 +76,6 @@ const Navbar = class extends React.Component {
           Menu
         </button>
         <nav className="docs-nav" aria-labelledby="nav-label">
-          <span id="nav-label" hidden="">main</span>
-          <h2>Rudiments</h2>
           <ul>
             <li>
               <Link className="navbar-item" to="/about">

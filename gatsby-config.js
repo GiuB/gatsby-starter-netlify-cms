@@ -1,3 +1,6 @@
+// Allow @import * from .scss files
+const globImporter = require('node-sass-glob-importer');
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
@@ -6,7 +9,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    {
+      resolve:`gatsby-plugin-sass`,
+      options:{
+        importer: globImporter()
+      }
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',

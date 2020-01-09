@@ -1,0 +1,7 @@
+.el {
+  transition: transform .5s ease;
+
+  &:global.openSmall {
+    transform: translateX(-70%);
+  }
+}

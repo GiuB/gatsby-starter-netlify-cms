@@ -1,45 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+
+import me from '../assets/img/me.svg'
+
 
 const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    }
+  static propTypes = {
+    handleToggleClick: PropTypes.func,
   }
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
+  static defaultPros = {
+    handleToggleClick: undefined,
   }
 
   render() {
     return (
       <div
-        className="vertical-navbar"
         role="navigation"
+        className="vertical-navbar"
         aria-label="main-navigation"
       >
-        <img src="https://image.flaticon.com/icons/svg/168/168732.svg" />
+        <button style={{ float: 'right' }} onClick={this.props.handleToggleClick}>TOggle</button>
+        <img src={me} alt="nerd portfolio" />
         <a className="docs-logo" href="/" style={{
           position: 'absolute',
           marginTop: '-15px',
@@ -47,7 +30,7 @@ const Navbar = class extends React.Component {
           float: 'left',
           textAlign: 'left',
           left: '13px',
-          top: '165px',
+          top: '240px',
           backgroundColor: 'transparent',
         }}>
           <div className="-text-center" style={{
@@ -56,15 +39,16 @@ const Navbar = class extends React.Component {
           }}>
             <span className="nav__fontLogo -cubic-font"
              style={{
-              color: '#ffffffe0',
+              color: '#fafafa',
               fontSize: '3.85em'
              }}>GiuB</span>
             <br />
             <span style={{
-                color: '#ffffffe0',
-                fontWeight: 900,
+                color: '#fafafa',
+                fontWeight: 700,
                 float: 'right',
                 marginTop: '-15px',
+                fontSize: 13,
             }}>web.dev
             </span>
           </div>

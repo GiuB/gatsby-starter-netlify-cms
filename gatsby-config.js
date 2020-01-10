@@ -1,5 +1,5 @@
 // Allow @import * from .scss files
-const globImporter = require('node-sass-glob-importer');
+const globImporter = require('node-sass-glob-importer')
 
 module.exports = {
   siteMetadata: {
@@ -10,10 +10,10 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve:`gatsby-plugin-sass`,
-      options:{
-        importer: globImporter()
-      }
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        importer: globImporter(),
+      },
     },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support

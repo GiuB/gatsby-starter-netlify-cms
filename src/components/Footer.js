@@ -7,7 +7,7 @@ import instagram from '../assets/img/social/instagram.svg'
 import twitter from '../assets/img/social/twitter.svg'
 import vimeo from '../assets/img/social/vimeo.svg'
 
-const Footer = class extends React.Component {
+class Footer extends React.Component {
   render() {
     return (
       <footer className="footer has-background-black has-text-white-ter">

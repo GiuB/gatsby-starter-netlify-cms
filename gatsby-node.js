@@ -86,23 +86,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-// Giub add avariables for global scss & styled components
-exports.onCreateWebpackConfig = ({ actions, stage, rules, plugins, loaders }) => {
+// Giub add avariables for global scss & module components
+exports.onCreateWebpackConfig = ({ actions }) => {
   const sassRuleModules = {
     test: /\.module\.s(a|c)ss$/,
     use: [
       {
         loader: 'sass-resources-loader',
         options: {
-          resources: ['src/assets/styles/variables.scss']
-        }
-      }
-    ]
-  };
+          resources: ['src/assets/styles/variables.scss'],
+        },
+      },
+    ],
+  }
 
   actions.setWebpackConfig({
     module: {
-      rules: [sassRuleModules]
-    }
-  });
+      rules: [sassRuleModules],
+    },
+  })
 }

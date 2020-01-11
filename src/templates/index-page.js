@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
+import Button from '../components/theme/Button'
+
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
@@ -71,6 +73,9 @@ export const IndexPageTemplate = ({
             <div className="column is-10 is-offset-1">
               <div className="content">
                 <div className="content">
+                  <Button variant="contained" color="primary">
+                    Hello World
+                  </Button>
                   <div className="tile">
                     <h1 className="title">{mainpitch.title}</h1>
                   </div>

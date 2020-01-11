@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { upperFirst } from 'lodash'
 
-import Navbar from '../components/Navbar'
+import Navbar from '../Navbar'
 import modStyle from './header.module.scss'
 
 class Header extends React.Component {

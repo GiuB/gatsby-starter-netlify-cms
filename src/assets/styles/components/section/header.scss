@@ -1,0 +1,9 @@
+.header {
+  .main-navigation {
+    transition: all 0.5s ease;
+  }
+
+  &.openSmall {
+    margin-left: -10em;
+  }
+}

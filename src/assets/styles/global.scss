@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'every';
 @import 'fonts';
-@import 'mixins/*';
-@import 'components/*';
-@import 'materialui-custom/*';
+@import 'mixins/*.scss';
+@import 'components/*.scss';
+@import 'components/*/*.scss';
+@import 'materialui-custom/*.scss';

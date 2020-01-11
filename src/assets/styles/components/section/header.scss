@@ -1,7 +1,6 @@
-.header {
-  .main-navigation {
-    transition: all 0.5s ease;
-  }
+.docs-header {
+  margin-left: 0;
+  transition: all 0.5s ease;
 
   &.openSmall {
     margin-left: -10em;

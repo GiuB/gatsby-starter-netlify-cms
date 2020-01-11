@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { upperFirst } from 'lodash'
 
 import Navbar from '../Navbar'
-import modStyle from './header.module.scss'
 
 class Header extends React.Component {
   static OPEN_TYPES = ['full', 'small', 'off'] // eslint-disable-line
@@ -22,11 +21,13 @@ class Header extends React.Component {
 
   render() {
     const { open } = this.state
-    const openStyle = `open${upperFirst(open)}`
+    const isSmall = open === 'small'
+    let openStyle = `open${upperFirst(open)}`
 
     return (
-      <header className={`docs-header ${modStyle.el} ${openStyle}`}>
+      <header className={`docs-header ${openStyle}`}>
         <Navbar
+          isSmall={isSmall}
           handleToggleClick={e =>
             this.setState({
               open: open === 'small' ? 'full' : 'small',

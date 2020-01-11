@@ -8,13 +8,37 @@ import ArrowLeftSharp from '@material-ui/icons/ArrowLeftSharp'
 const Navbar = class extends React.Component {
   static propTypes = {
     handleToggleClick: PropTypes.func,
+    isSmall: PropTypes.bool,
   }
 
   static defaultPros = {
     handleToggleClick: undefined,
+    isSmall: false,
+  }
+
+  getStyle = () => {
+    const style = {
+      arrowLeftSharp: {
+        position: 'absolute',
+        right: 0,
+        backgroundColor: 'rgba(255,255,255,.2)',
+        color: '#fff',
+        fontSize: '35px',
+        cursor: 'pointer',
+        transition: 'all .3s ease',
+      },
+    }
+
+    if (this.props.isSmall) {
+      style.arrowLeftSharp['transform'] = 'rotate(180deg)'
+    }
+
+    return style
   }
 
   render() {
+    const style = this.getStyle()
+
     return (
       <div
         role="navigation"
@@ -23,14 +47,7 @@ const Navbar = class extends React.Component {
       >
         <ArrowLeftSharp
           onClick={this.props.handleToggleClick}
-          style={{
-            position: 'absolute',
-            right: 0,
-            backgroundColor: 'rgba(255,255,255,.2)',
-            color: '#fff',
-            fontSize: '35px',
-            cursor: 'pointer',
-          }}
+          style={style.arrowLeftSharp}
         />
         <img src={me} alt="nerd portfolio" />
         <a
@@ -43,7 +60,7 @@ const Navbar = class extends React.Component {
             float: 'left',
             textAlign: 'left',
             left: '13px',
-            top: '240px',
+            top: '180px',
             backgroundColor: 'transparent',
           }}
         >

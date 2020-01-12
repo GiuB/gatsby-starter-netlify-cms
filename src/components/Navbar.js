@@ -1,9 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import List from '@material-ui/core/List'
+import omit from 'lodash/omit'
 
 import me from '../assets/img/me.svg'
-import ArrowLeftSharp from '@material-ui/icons/ArrowLeftSharp'
+import ArrowBackIosSharp from '@material-ui/icons/ArrowBackIosSharp'
+
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+
+function ListItemLink(props) {
+  return (
+    <ListItem button component="a" {...omit(props, 'children')}>
+      {props.children}
+    </ListItem>
+  )
+}
 
 const Navbar = class extends React.Component {
   static propTypes = {
@@ -18,19 +32,19 @@ const Navbar = class extends React.Component {
 
   getStyle = () => {
     const style = {
-      arrowLeftSharp: {
+      arrowBackIosSharp: {
         position: 'absolute',
         right: 0,
-        backgroundColor: 'rgba(255,255,255,.2)',
         color: '#fff',
-        fontSize: '35px',
+        fontSize: 25,
+        margin: '8px 10px',
         cursor: 'pointer',
         transition: 'all .3s ease',
       },
     }
 
     if (this.props.isSmall) {
-      style.arrowLeftSharp['transform'] = 'rotate(180deg)'
+      style.arrowBackIosSharp['transform'] = 'rotate(180deg)'
     }
 
     return style
@@ -38,6 +52,12 @@ const Navbar = class extends React.Component {
 
   render() {
     const style = this.getStyle()
+    const navLinkProps = {
+      style: {
+        textAlign: 'center',
+        width: '100%',
+      },
+    }
 
     return (
       <div
@@ -45,90 +65,92 @@ const Navbar = class extends React.Component {
         className="vertical-navbar"
         aria-label="main-navigation"
       >
-        <ArrowLeftSharp
-          onClick={this.props.handleToggleClick}
-          style={style.arrowLeftSharp}
-        />
-        <img src={me} alt="nerd portfolio" />
-        <a
-          className="docs-logo"
-          href="/"
+        <div
           style={{
-            position: 'absolute',
-            marginTop: '-15px',
-            zIndex: 999999999,
-            float: 'left',
-            textAlign: 'left',
-            left: '13px',
-            top: '180px',
-            backgroundColor: 'transparent',
+            position: 'relative',
           }}
         >
-          <div
-            className="-text-center"
+          <ArrowBackIosSharp
+            onClick={this.props.handleToggleClick}
+            style={style.arrowBackIosSharp}
+          />
+          <img src={me} alt="nerd portfolio" />
+          <a
+            className="docs-logo"
+            href="/"
             style={{
-              fontSize: '.8rem',
-              backgroundColor: '#0000',
+              position: 'absolute',
+              bottom: 10,
+              zIndex: 999999999,
+              float: 'left',
+              textAlign: 'left',
+              left: '13px',
+              backgroundColor: 'transparent',
             }}
           >
-            <span
-              className="nav__fontLogo -cubic-font"
+            <div
+              className="-text-center"
               style={{
-                color: '#fafafa',
-                fontSize: '3.85em',
+                fontSize: '.8rem',
+                backgroundColor: '#0000',
               }}
             >
-              GiuB
-            </span>
-            <br />
-            <span
-              style={{
-                color: '#fafafa',
-                fontWeight: 700,
-                float: 'right',
-                marginTop: '-15px',
-                fontSize: 13,
-              }}
-            >
-              web.dev
-            </span>
-          </div>
-        </a>
+              <span
+                className="nav__fontLogo -cubic-font"
+                style={{
+                  color: '#fafafa',
+                  fontSize: '3.85em',
+                }}
+              >
+                GiuB
+              </span>
+              <br />
+              <span
+                style={{
+                  color: '#fafafa',
+                  fontWeight: 700,
+                  float: 'right',
+                  marginTop: '-15px',
+                  fontSize: 13,
+                }}
+              >
+                web.dev
+              </span>
+            </div>
+          </a>
+        </div>
         <button className="docs-nav-toggle" aria-expanded="false">
           <svg className="docs-icon" focusable="false" viewBox="0 0 32 32">
             <path d="M3,3 29,3 M3,16 29,16 M3,29 29,29"></path>
           </svg>
           Menu
         </button>
-        <nav className="docs-nav" aria-labelledby="nav-label">
-          <ul>
-            <li>
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <List component="nav" className="docs-nav">
+          <ListItemLink components="div">
+            <Link className="navbar-item" {...navLinkProps} to="/about">
+              About
+            </Link>
+          </ListItemLink>
+          <ListItemLink components="div">
+            <Link className="navbar-item" {...navLinkProps} to="/products">
+              Products
+            </Link>
+          </ListItemLink>
+          <ListItemLink components="div">
+            <Link className="navbar-item" {...navLinkProps} to="/blog">
+              Blog
+            </Link>
+          </ListItemLink>
+          <ListItemLink components="div">
+            <Link
+              {...navLinkProps}
+              className="navbar-item"
+              to="/contact/examples"
+            >
+              Form Examples
+            </Link>
+          </ListItemLink>
+        </List>
       </div>
     )
   }

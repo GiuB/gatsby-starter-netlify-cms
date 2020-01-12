@@ -5,6 +5,7 @@
   $secondary-bg-color: lighten($secondary-color, 10%);
 
   border-radius: 0;
+  box-shadow: none;
   padding: 12px 32px 10px;
   text-transform: lowercase;
   background-color: $primary-bg-color;
